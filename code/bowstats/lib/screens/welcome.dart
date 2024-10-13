@@ -16,21 +16,51 @@ class Welcome extends StatelessWidget {
         color: kNightColor,
         child: SafeArea(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset("assets/icons/logo.svg",
-                  height: MediaQuery.of(context).size.height * kLogoRatio,
-                  semanticsLabel: "Logo BowStats",
-                ),
-                  const Text("Bienvenue sur",
-                  style: kTitleText,
-                  ),
-                const Text("BowStats",
-                  style: kMintTitleText,
-                  ),
-              ],
-            )
-        ),
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: kUpAndDownMargin),
+            SvgPicture.asset(
+              "assets/icons/logo.svg",
+              height: MediaQuery.of(context).size.height * kLogoRatio,
+              semanticsLabel: "Logo BowStats",
+            ),
+            const SizedBox(height: kVerticalMarginS),
+            const Text(
+              "Bienvenue sur",
+              style: kTitleText,
+            ),
+            const SizedBox(height: kUpAndDownMargin),
+            const Text(
+              "BowStats",
+              style: kMintTitleText,
+            ),
+            const SizedBox(height: kVerticalHomeButton),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                side: const BorderSide(color: kMintColor),
+                backgroundColor: kTransparentColor,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 94, vertical: 24),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+              ),
+              child: const Text("Se connecter", style: kTransparentButtonText),
+            ),
+            const SizedBox(height: kVerticalMarginS),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: kMintColor,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 76, vertical: 24),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+              ),
+              child: const Text("Créer un compte", style: kMintButtonText),
+            ),
+          ],
+        )),
       ),
     );
   }
