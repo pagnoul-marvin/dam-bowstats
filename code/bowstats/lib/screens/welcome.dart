@@ -1,8 +1,11 @@
+import 'package:bowstats/screens/login.dart';
+import 'package:bowstats/screens/register.dart';
 import 'package:bowstats/styles/colors.dart';
 import 'package:bowstats/styles/fonts.dart';
 import 'package:bowstats/styles/spacings.dart';
+import 'package:bowstats/widgets/logo.dart';
+import 'package:bowstats/widgets/nav_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({super.key});
@@ -14,52 +17,38 @@ class Welcome extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         color: kNightColor,
-        child: SafeArea(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: kUpAndDownMargin),
-            SvgPicture.asset(
-              "assets/icons/logo.svg",
-              height: MediaQuery.of(context).size.height * kLogoRatio,
-              semanticsLabel: "Logo BowStats",
-            ),
-            const SizedBox(height: kVerticalMarginS),
-            const Text(
-              "Bienvenue sur",
-              style: kTitleText,
-            ),
-            const SizedBox(height: kUpAndDownMargin),
-            const Text(
-              "BowStats",
-              style: kMintTitleText,
-            ),
-            const SizedBox(height: kVerticalHomeButton),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                side: const BorderSide(color: kMintColor),
+        child: const SafeArea(
+            child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: kUpAndDownMargin),
+              Logo(),
+              SizedBox(height: kVerticalMarginS),
+              Text("Bienvenue sur", style: kTitleText),
+              SizedBox(height: kUpAndDownMargin),
+              Text("BowStats", style: kMintTitleText),
+              SizedBox(height: kVerticalHomeButton),
+              NavButton(
                 backgroundColor: kTransparentColor,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 94, vertical: 24),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
+                navigateTo: Login(),
+                textStyle: kTransparentButtonText,
+                horizontalPadding: 94,
+                verticalPadding: 24,
+                side: BorderSide(color: kMintColor),
+                text: "Se connecter",
               ),
-              child: const Text("Se connecter", style: kTransparentButtonText),
-            ),
-            const SizedBox(height: kVerticalMarginS),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
+              SizedBox(height: kVerticalMarginS),
+              NavButton(
                 backgroundColor: kMintColor,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 76, vertical: 24),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-              ),
-              child: const Text("Créer un compte", style: kMintButtonText),
-            ),
-          ],
+                navigateTo: Register(),
+                textStyle: kMintButtonText,
+                horizontalPadding: 76,
+                verticalPadding: 24,
+                text: "Créer un compte",
+              )
+            ],
+          ),
         )),
       ),
     );

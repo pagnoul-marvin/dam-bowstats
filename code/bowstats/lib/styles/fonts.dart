@@ -31,6 +31,12 @@ const kMintButtonText = TextStyle(
   fontSize: kTextSizeL
 );
 
+const kExplicationsText = TextStyle(
+  color: kWhiteColor,
+  fontWeight: FontWeight.normal,
+  fontSize: kTextSizeL
+);
+
 const kTransparentButtonText = TextStyle(
   color: kWhiteColor,
   fontWeight: FontWeight.bold,
