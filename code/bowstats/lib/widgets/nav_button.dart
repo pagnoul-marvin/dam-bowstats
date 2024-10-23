@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class NavButton extends StatelessWidget {
   final Color backgroundColor;
   final TextStyle textStyle;
-  final Widget navigateTo;
+  final GestureTapCallback navigateTo;
   final double horizontalPadding;
   final double verticalPadding;
-  final BorderSide? side;
-  final String text;
+  final double borderRadius;
+  final String label;
+  final Color? borderColor;
 
   const NavButton(
       {super.key,
@@ -16,23 +17,28 @@ class NavButton extends StatelessWidget {
       required this.textStyle,
       required this.horizontalPadding,
       required this.verticalPadding,
-      this.side,
-      required this.text});
+      required this.borderRadius,
+      required this.label,
+        this.borderColor
+      });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => navigateTo));
-      },
-      style: ElevatedButton.styleFrom(
-        side: side,
-          backgroundColor: backgroundColor,
+    return GestureDetector(
+      onTap: navigateTo,
+      child: Container(
           padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0))),
-      child: Text(text, style: textStyle),
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(borderRadius),
+            border: Border.all(
+              color: borderColor ?? Colors.transparent,
+            )
+          ),
+          child: Text(
+            label,
+            style: textStyle,
+          )),
     );
   }
 }

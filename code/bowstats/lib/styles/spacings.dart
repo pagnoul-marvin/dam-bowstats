@@ -1,6 +1,10 @@
 const kHorizontalMargin = 10.0;
 const kVerticalMargin = 15.0;
 
+const kButtonHorizontalPadding = 94.0;
+const kSecondButtonHorizontalPadding = 76.0;
+const kButtonVerticalPadding = 24.0;
+
 const kHorizontalMarginS = kHorizontalMargin * 2.2;
 const kVerticalMarginS = kVerticalMargin * 2;
 

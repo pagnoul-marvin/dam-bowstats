@@ -1,7 +1,7 @@
-import 'package:bowstats/screens/login.dart';
 import 'package:bowstats/screens/register.dart';
 import 'package:bowstats/styles/colors.dart';
 import 'package:bowstats/styles/fonts.dart';
+import 'package:bowstats/styles/others.dart';
 import 'package:bowstats/styles/spacings.dart';
 import 'package:bowstats/widgets/logo.dart';
 import 'package:bowstats/widgets/nav_button.dart';
@@ -17,35 +17,45 @@ class Welcome extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         color: kNightColor,
-        child: const SafeArea(
+        child: SafeArea(
             child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: kUpAndDownMargin),
-              Logo(),
-              SizedBox(height: kVerticalMarginS),
-              Text("Bienvenue sur", style: kTitleText),
-              SizedBox(height: kUpAndDownMargin),
-              Text("BowStats", style: kMintTitleText),
-              SizedBox(height: kVerticalHomeButton),
+              const SizedBox(height: kUpAndDownMargin),
+              const Logo(),
+              const SizedBox(height: kVerticalMarginS),
+              const Text("Bienvenue sur", style: kTitleText),
+              const SizedBox(height: kUpAndDownMargin),
+              const Text("BowStats", style: kMintTitleText),
+              const SizedBox(height: kVerticalHomeButton),
               NavButton(
                 backgroundColor: kTransparentColor,
-                navigateTo: Login(),
+                navigateTo: (){
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context)=> const Register())
+                  );
+                },
                 textStyle: kTransparentButtonText,
-                horizontalPadding: 94,
-                verticalPadding: 24,
-                side: BorderSide(color: kMintColor),
-                text: "Se connecter",
+                horizontalPadding: kButtonHorizontalPadding,
+                verticalPadding: kButtonVerticalPadding,
+                borderRadius: kBorderRadius,
+                borderColor: kMintColor,
+                label: "Se connecter",
               ),
-              SizedBox(height: kVerticalMarginS),
+              const SizedBox(height: kVerticalMarginS),
               NavButton(
                 backgroundColor: kMintColor,
-                navigateTo: Register(),
+                navigateTo: (){
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context)=> const Register())
+                  );
+                },
                 textStyle: kMintButtonText,
-                horizontalPadding: 76,
-                verticalPadding: 24,
-                text: "Créer un compte",
+                horizontalPadding: kSecondButtonHorizontalPadding,
+                verticalPadding: kButtonVerticalPadding,
+                borderRadius: kBorderRadius,
+                label: "Créer un compte",
               )
             ],
           ),

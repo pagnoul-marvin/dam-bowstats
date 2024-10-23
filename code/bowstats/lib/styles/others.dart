@@ -1,0 +1,1 @@
+const kBorderRadius = 10.0;
